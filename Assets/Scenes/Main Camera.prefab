@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &315895299392116720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 315895299392116735}
+  - component: {fileID: 315895299392116734}
+  - component: {fileID: 315895299392116721}
+  - component: {fileID: 315895299392116732}
+  - component: {fileID: 315895299392116733}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &315895299392116735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315895299392116720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &315895299392116734
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315895299392116720}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0.7294118, b: 1, a: 1}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &315895299392116721
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315895299392116720}
+  m_Enabled: 1
+--- !u!114 &315895299392116732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315895299392116720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c3d608f0f911b41acc73444c73d900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sky1: {fileID: 0}
+  sky2: {fileID: 0}
+--- !u!114 &315895299392116733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315895299392116720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d920eda9b8b60a94087613875dad4ccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wave: {fileID: 0}
+  RocketTxt: {fileID: 0}
+  RocketButton: {fileID: 0}
+  upgr: {fileID: 5624342238966451805, guid: 82d2aa9e4e7843240bd98908cc199ca0, type: 3}
+  waves:
+  - {fileID: 8070224596475444781, guid: df5af16b3d7a54f4c9bfeeb934a48d8c, type: 3}
+  - {fileID: 2357097741624911622, guid: 82cdc4ec507527c4aa32acfacb9d8d4f, type: 3}
+  - {fileID: 2002753558542398587, guid: 7c36496b616e39f4493b4e59a218bc67, type: 3}
+  - {fileID: 5757765077594229581, guid: 2fb34c70fad4c5a4ca5d233b5b3ccbac, type: 3}
+  - {fileID: 4675789014779593364, guid: 2dcfe97124dd3f24d8c23565e90cbfe2, type: 3}
+  - {fileID: 4205737137296395880, guid: ddb030393ea0ba84998bedae35c1acc0, type: 3}
+  - {fileID: 1238480306941864822, guid: 0152ee2bde9b8194fb960c30ce9ecfcd, type: 3}
+  - {fileID: 6610048704072445892, guid: 6a4e5f913b2bd6046a6c4ca80fd9be67, type: 3}
+  - {fileID: 2718572415238664129, guid: 5d05000a6dfa7934180476a5281e9078, type: 3}
+  - {fileID: 42160230397548565, guid: 3bca92ced0e8c0d46a2f67f125a4c8d9, type: 3}
+  - {fileID: 3938565898460505092, guid: 4f3940c2b700b2a41a435aba78279061, type: 3}
+  Bosswaves:
+  - {fileID: 7030015211650123695, guid: 0b7eb634e977e8c4c82208468087dd9d, type: 3}
