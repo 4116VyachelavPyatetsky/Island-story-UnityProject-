@@ -11,7 +11,7 @@ public class SlowerBullets : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Bullets are slowed";
+        A.GetComponent<Text>().text = "Пули замедлены";
     }
     void OnMouseDown()
     {

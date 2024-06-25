@@ -13,7 +13,7 @@ public class AddShield : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "You're under protection";
+        A.GetComponent<Text>().text = "Вы под защитой";
     }
     void OnMouseDown()
     {

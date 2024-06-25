@@ -12,7 +12,7 @@ public class DopGunUpgr : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Strange technology";
+        A.GetComponent<Text>().text = "Странная технология";
     }
     void OnMouseDown()
     {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ab01921f7a1152144bae54133b59661e
+guid: e158e35bdf01e5f429c89d30780d5891
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Silkscreen [Rus by Mr.Enot]
+  - Nunito
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 3

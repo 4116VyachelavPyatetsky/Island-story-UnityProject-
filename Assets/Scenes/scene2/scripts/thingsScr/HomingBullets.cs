@@ -12,7 +12,7 @@ public class HomingBullets : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Homing bullets";
+        A.GetComponent<Text>().text = "Самонаводящиеся пули";
     }
 
     // Update is called once per frame

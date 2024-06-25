@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   hpup: 10
-  b: Health up
+  b: "\u0417\u0434\u043E\u0440\u043E\u0432\u044C\u0435 \u0443\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u043E"
   speedup: -0.002
   newspr: {fileID: 21300000, guid: e72cb6285890b7547bf1857768f1f640, type: 3}
   Name: {fileID: 7876072954582204974, guid: 1479829dc8be7ca4c9d8cad74c18cd5f, type: 3}

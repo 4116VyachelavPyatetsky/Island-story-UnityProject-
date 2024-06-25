@@ -13,7 +13,7 @@ public class BouncingBullets : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Bouncing bullets";
+        A.GetComponent<Text>().text = "Отскакивающие пули";
     }
 
     // Update is called once per frame

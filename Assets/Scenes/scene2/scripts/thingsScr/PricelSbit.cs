@@ -13,7 +13,7 @@ public class PricelSbit : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Sight off";
+        A.GetComponent<Text>().text = "Прицел сбит";
     }
     void OnMouseDown()
     {

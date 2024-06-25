@@ -12,7 +12,7 @@ public class RocketUpScr : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Big bomb";
+        A.GetComponent<Text>().text = "Большие бомбы";
     }
     void OnMouseDown()
     {

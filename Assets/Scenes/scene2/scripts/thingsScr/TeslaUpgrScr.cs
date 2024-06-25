@@ -12,7 +12,7 @@ public class TeslaUpgrScr : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Strength of lightning";
+        A.GetComponent<Text>().text = "Сила молнии";
     }
     void OnMouseDown()
     {

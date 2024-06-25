@@ -12,7 +12,7 @@ public class RapidUp : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Rapid Up";
+        A.GetComponent<Text>().text = "Скорострельность увеличена";
     }
     void OnMouseDown()
     {

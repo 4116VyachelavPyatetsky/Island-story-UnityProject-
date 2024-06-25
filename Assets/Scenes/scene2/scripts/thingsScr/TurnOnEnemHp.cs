@@ -12,7 +12,7 @@ public class TurnOnEnemHp : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "You can see the enemy's health";
+        A.GetComponent<Text>().text = "Вы видите здоровье врагов";
     }
     void OnMouseDown()
     {

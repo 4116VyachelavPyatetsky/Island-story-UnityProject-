@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: ab01921f7a1152144bae54133b59661e
+guid: 505658eabae5eaa48a2d8b7466767b79
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 16
+  fontSize: 40
   forceTextureCase: -1
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Silkscreen [Rus by Mr.Enot]
+  - Allods
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1

@@ -13,7 +13,7 @@ public class HugryMoney : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "HUNGRY money";
+        A.GetComponent<Text>().text = "ГОЛОДНЫЕ деньги";
     }
 
     // Update is called once per frame

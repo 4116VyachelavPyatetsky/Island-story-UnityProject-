@@ -13,7 +13,7 @@ public class SpeedUp : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Fly faster";
+        A.GetComponent<Text>().text = "Скорость увеличена";
     }
     void OnMouseDown()
     {

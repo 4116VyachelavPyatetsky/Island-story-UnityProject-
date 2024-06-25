@@ -3278,7 +3278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 7}
   m_SizeDelta: {x: 744.6929, y: 301.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1965694754
@@ -3302,7 +3302,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: dbcff7b360b018b44a223914ed602bf5, type: 3}
+    m_Font: {fileID: 12800000, guid: 505658eabae5eaa48a2d8b7466767b79, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -3314,9 +3314,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '
-
-    Watch an ad to get a second life.'
+  m_Text: "\n\u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0438\u0442\u0435 \u0440\u0435\u043A\u043B\u0430\u043C\u0443,
+    \u0447\u0442\u043E\u0431\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C
+    \u0432\u0442\u043E\u0440\u0443\u044E \u0436\u0438\u0437\u043D\u044C!"
 --- !u!222 &1965694755
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4584,7 +4584,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866961072805441483, guid: b76c6b8893f18424d904776399b42ffb, type: 3}
       propertyPath: m_Text
-      value: Back to the island.
+      value: "\u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043D\u0430
+        \u043E\u0441\u0442\u0440\u043E\u0432"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866961072805441483, guid: b76c6b8893f18424d904776399b42ffb, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 505658eabae5eaa48a2d8b7466767b79, type: 3}
+    - target: {fileID: 7866961072805441483, guid: b76c6b8893f18424d904776399b42ffb, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b76c6b8893f18424d904776399b42ffb, type: 3}
@@ -6390,23 +6399,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: dbcff7b360b018b44a223914ed602bf5, type: 3}
-    m_FontSize: 50
+    m_Font: {fileID: 12800000, guid: 505658eabae5eaa48a2d8b7466767b79, type: 3}
+    m_FontSize: 56
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 50
+    m_MaxSize: 56
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '
-
-    You died!
-
-'
+  m_Text: "\n\u0412\u044B \u043F\u043E\u0433\u0438\u0431\u043B\u0438!\n"
 --- !u!222 &8456420197003250603
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -145,8 +145,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: dbcff7b360b018b44a223914ed602bf5, type: 3}
-    m_FontSize: 21
+    m_Font: {fileID: 12800000, guid: 505658eabae5eaa48a2d8b7466767b79, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -157,9 +157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Miner
-
-'
+  m_Text: "\u041A\u043E\u043F\u0430\u0442\u0435\u043B\u044C\n"
 --- !u!1 &3305710547351774218
 GameObject:
   m_ObjectHideFlags: 0
