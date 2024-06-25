@@ -15,6 +15,7 @@ public class ChangSceneOnMap : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        GetComponent<AudioSource>().Play();
         gameObject.GetComponent<Animation>().Play("KnopAnim");
         A.FadeToLevel();
     }

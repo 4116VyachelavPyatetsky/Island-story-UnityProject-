@@ -12,7 +12,7 @@ public class TeslaUpgrScr : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Lightning Force";
+        A.GetComponent<Text>().text = "Strength of lightning";
     }
     void OnMouseDown()
     {
@@ -20,6 +20,7 @@ public class TeslaUpgrScr : MonoBehaviour
     }
     void Make()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         wavescript.wavescomle = 0;
         Destroy(gameObject.transform.parent.gameObject.transform.parent.gameObject);
         Destroy(A);

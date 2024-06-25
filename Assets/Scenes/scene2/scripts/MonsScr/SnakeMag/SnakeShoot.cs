@@ -8,9 +8,11 @@ public class SnakeShoot : MonoBehaviour
     Vector3 target;
     GameObject plane;
     Animator anm;
+    AudioSource au;
     // Start is called before the first frame update
     void Start()
     {
+        au = transform.parent.parent.GetComponent<AudioSource>();
         plane = GameObject.Find("plane");
         target = plane.transform.position;
         anm = gameObject.GetComponent<Animator>();
@@ -27,6 +29,7 @@ public class SnakeShoot : MonoBehaviour
     }
     void Attack()
     {
+        au.PlayOneShot(au.clip);
         GameObject A = Instantiate(proj, transform.position, Quaternion.identity);
         A.GetComponent<projscript>().rastoynie = target + (target - transform.position) * 10;
         A.GetComponent<projscript>().Vzriv = false;

@@ -6,19 +6,22 @@ using UnityEngine.SceneManagement;
 public class PerehScrip : MonoBehaviour
 {
     public GameObject temn;
-    void OnMouseDown()
+    public GameObject wood, stone;
+    public void Pereh()
     {
-        if(money.znach >=200 && money.stoneznach >= 200)
+        if (money.znach >= 200 && money.stoneznach >= 200)
         {
             money.znach -= 200;
             money.stoneznach -= 200;
+            textscr.dozens(money.znach, ref wood);
+            textscr.dozens(money.stoneznach, ref stone);
             TemnScr A = temn.GetComponent<TemnScr>();
             A.scene = 1;
             SetVariablesToDefault();
             A.a = LoadSceneMode.Single;
             A.FadeToLevel();
         }
-        gameObject.GetComponent<Animation>().Play("KnopAnim");
+        else GameObject.Find("Main Camera").GetComponent<money>().Addvertise();
     }
 
     void SetVariablesToDefault()

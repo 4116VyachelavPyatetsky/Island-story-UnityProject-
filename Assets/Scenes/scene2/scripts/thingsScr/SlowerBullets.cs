@@ -11,7 +11,7 @@ public class SlowerBullets : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Bullets slowed";
+        A.GetComponent<Text>().text = "Bullets are slowed";
     }
     void OnMouseDown()
     {
@@ -19,6 +19,7 @@ public class SlowerBullets : MonoBehaviour
     }
     void Make()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         wavescript.wavescomle = 0;
         Destroy(gameObject.transform.parent.gameObject.transform.parent.gameObject);
         Destroy(A);

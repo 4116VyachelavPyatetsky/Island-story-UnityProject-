@@ -12,7 +12,7 @@ public class TurnOnEnemHp : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "You see enemy HP";
+        A.GetComponent<Text>().text = "You can see the enemy's health";
     }
     void OnMouseDown()
     {
@@ -20,6 +20,7 @@ public class TurnOnEnemHp : MonoBehaviour
     }
     void Make()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         wavescript.wavescomle = 0;
         Destroy(gameObject.transform.parent.gameObject.transform.parent.gameObject);
         Destroy(A);

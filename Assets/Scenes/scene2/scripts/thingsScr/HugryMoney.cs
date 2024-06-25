@@ -13,7 +13,7 @@ public class HugryMoney : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "HUNGRY money money magnets to you";
+        A.GetComponent<Text>().text = "HUNGRY money";
     }
 
     // Update is called once per frame
@@ -23,6 +23,7 @@ public class HugryMoney : MonoBehaviour
     }
     void Make()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         wavescript.wavescomle = 0;
         Destroy(gameObject.transform.parent.gameObject.transform.parent.gameObject);
         Destroy(A);

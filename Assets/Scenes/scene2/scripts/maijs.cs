@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class maijs : MonoBehaviour
 {
@@ -13,18 +14,22 @@ public class maijs : MonoBehaviour
     Vector3 spose;
     void Start()
     {
+        Vector3 sz = gameObject.GetComponent<BoxCollider2D>().size;
+        gameObject.GetComponent<BoxCollider2D>().size = new Vector3(sz.x, sz.y*wavescript.screenSizePere, sz.z);
         jsb = GameObject.Find("jbase");
         js = GameObject.Find("jstick");
     }
-    void Update()
+    void FixedUpdate()
     {
-        if(Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            jsb.transform.position = new Vector3(10000.0f, 10000.0f, 0.0f);
-        }
-        if (Input.GetMouseButton(0) && !JoyStick && !wavescript.gamestopped)
-        {
-            plane.transform.position = Vector2.MoveTowards(plane.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Time.deltaTime * speed * 67f);
+        if (!EventSystem.current.IsPointerOverGameObject()) {
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                jsb.transform.position = new Vector3(10000.0f, 10000.0f, 0.0f);
+            }
+            if (Input.GetMouseButton(0) && !JoyStick && !wavescript.gamestopped)
+            {
+                plane.transform.position = Vector2.MoveTowards(plane.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), Time.deltaTime * speed * 67f);
+            }
         }
     }
     //plane.transform.position = Vector3.MoveTowards(plane.transform.position, spose, Time.deltaTime * speed);

@@ -11,10 +11,12 @@ public class spawnScr : MonoBehaviour
     public GameObject pvt;
     int enem = 2;
     GameObject nowEnem;
+    AudioSource au;
 
     private void Start()
     {
         door = transform.GetChild(0).GetComponent<Animation>();
+        au = transform.GetChild(0).GetComponent<AudioSource>();
     }
     void FixedUpdate()
     {
@@ -45,7 +47,6 @@ public class spawnScr : MonoBehaviour
     IEnumerator Wait()
     {
         isBusy = true;
-        Debug.Log("lul");
         yield return new WaitForSeconds(4.0f);
         enem = Random.Range(0, 3);
         if(enem == 1)
@@ -65,6 +66,7 @@ public class spawnScr : MonoBehaviour
             pvtbl = true;
         }
         door.Play("doorAnm");
+        au.Play();
         isBusy = false;
     }
 }

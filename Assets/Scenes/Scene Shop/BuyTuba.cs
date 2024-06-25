@@ -9,6 +9,7 @@ public class BuyTuba : MonoBehaviour
         int cost = transform.GetComponent<CostScript>().cost;
         if (planescr.PlaneMoney >= cost)
         {
+            GetComponent<AudioSource>().Play();
             planescr.PlaneMoney -= cost;
             GameObject.Find("plane").GetComponent<planescr>().PlusMoney(0);
             Destroy(gameObject);

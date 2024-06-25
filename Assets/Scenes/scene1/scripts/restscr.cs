@@ -8,8 +8,11 @@ using System.IO;
 public class restscr : MonoBehaviour
 {
     public GameObject wCost;
+    GameObject Level;
     public GameObject sCost;
     public GameObject wost;
+    GameObject MoneyStone;
+    GameObject MoneyWood;
     GameObject A;
     GameObject C;
     Transform B;
@@ -17,6 +20,8 @@ public class restscr : MonoBehaviour
     GameObject M; 
     public Item item;
     float j = 1;
+
+    AudioSource au;
     public class Item
     {
         public int lvl;
@@ -34,9 +39,12 @@ public class restscr : MonoBehaviour
     }
     void OnMouseDown()
     {
+        au.Play();
+        gameObject.GetComponent<Animation>().Play("ShopKnopAnm");
         if (item.stonecost <= money.stoneznach && item.woodcost <= money.znach) 
         {
             item.lvl++;
+            Level.GetComponent<Text>().text = item.lvl.ToString();
             item.MineForce++;
             if (item.lvl == 1)
             {
@@ -45,7 +53,7 @@ public class restscr : MonoBehaviour
                 anim = M.GetComponent<Animator>();
                 //A = Instantiate(wCost);
                 //C = Instantiate(sCost);
-                GameObject Canvas1 = GameObject.Find("Canvas");
+                GameObject Canvas1 = GameObject.Find("CanvasShop");
                 Transform B = Canvas1.transform.Find("Costtetx");
                 A.transform.SetParent(B, false);
                 C.transform.SetParent(B, false);
@@ -54,20 +62,38 @@ public class restscr : MonoBehaviour
             money.stoneznach -= item.stonecost;
             item.woodcost = Mathf.RoundToInt(item.woodcost * 1.5f);
             item.stonecost = Mathf.RoundToInt(item.stonecost * 1.5f);
+            textscr.dozens(item.woodcost, ref A);
+            textscr.dozens(item.stonecost, ref C);
+            textscr.dozens(money.znach, ref MoneyWood);
+            textscr.dozens(money.stoneznach, ref MoneyStone);
             j += 0.25f;
             anim.SetFloat("speed", j);
+        }
+        else
+        {
+            money.DontHaveMoney++;
+            if (money.DontHaveMoney >= 2 && !TimerToGO.IsWorking)
+            {
+                money.DontHaveMoney = 0;
+                GameObject.Find("Main Camera").GetComponent<money>().Addvertise();
+            }
         }
     }
     void Start()
     {
+        au = GetComponent<AudioSource>();
+        MoneyStone = GameObject.Find("stonescore(Clone)");
+        MoneyWood = GameObject.Find("Text");
         if (PlayerPrefs.HasKey("ReMineWC"))
         {
             item = new Item(PlayerPrefs.GetInt("ReMineLvl"), PlayerPrefs.GetInt("ReMineWC"), PlayerPrefs.GetInt("ReMineSC"), PlayerPrefs.GetInt("ReMineMF"));
         }
         else item = new Item(0, 100, 100,0);
         A = Instantiate(wCost);
+        Level = A.transform.GetChild(1).gameObject;
+        Level.GetComponent<Text>().text = item.lvl.ToString();
         C = Instantiate(sCost);
-        GameObject Canvas1 = GameObject.Find("Canvas");
+        GameObject Canvas1 = GameObject.Find("CanvasShop");
         B = Canvas1.transform.Find("Costtetx");
         A.transform.SetParent(B, false);
         C.transform.SetParent(B, false);
@@ -91,7 +117,7 @@ public class restscr : MonoBehaviour
     {
         Save();
     }
-    private void OnApplicationFocus(bool focus)
+    private void OnApplicationPause(bool focus)
     {
         if (!focus)
         {
@@ -104,5 +130,10 @@ public class restscr : MonoBehaviour
         PlayerPrefs.SetInt("ReMineWC", item.woodcost);
         PlayerPrefs.SetInt("ReMineSC", item.stonecost);
         PlayerPrefs.SetInt("ReMineMF", item.MineForce);
+        //PlayerPrefs.DeleteAll();
+    }
+    private void OnDestroy()
+    {
+        Save();
     }
 }

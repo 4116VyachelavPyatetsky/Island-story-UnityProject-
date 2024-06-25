@@ -14,8 +14,11 @@ public class BokDrag : MonoBehaviour
     public bool onscene = false;
     WaveContoller wave;
     Animator anm;
+
+    AudioSource au;
     private void Start()
     {
+        au = gameObject.GetComponent<AudioSource>();
         plane = GameObject.Find("plane");
         target = plane.transform.position;
         anm = gameObject.GetComponent<Animator>();
@@ -33,6 +36,7 @@ public class BokDrag : MonoBehaviour
     }
     void FindTarget()
     {
+        au.Play();
         if (!wavescript.gamestopped)
         {
             target = plane.transform.position;

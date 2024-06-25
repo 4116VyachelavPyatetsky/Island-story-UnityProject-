@@ -10,9 +10,11 @@ public class autosscript : MonoBehaviour
     bool isBusy = false;
     public static float speed = 0.25f;
     public static int reStonePower = 1;
+    AudioSource au;
     void Start()
     {
-        Score = GameObject.Find("stonescore(Clone)"); ;
+        au = GetComponent<AudioSource>();
+        Score = GameObject.Find("stonescore(Clone)"); 
     }
     private void Update()
     {
@@ -25,6 +27,7 @@ public class autosscript : MonoBehaviour
     {
         isBusy = true;
         yield return new WaitForSeconds(speed);
+        au.Play();
         money.stoneznach += reStonePower;
         textscr.dozens(money.stoneznach, ref Score);
         yield return new WaitForSeconds(speed);

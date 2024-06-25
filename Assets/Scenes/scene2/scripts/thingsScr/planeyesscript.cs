@@ -28,6 +28,7 @@ public class planeyesscript : MonoBehaviour
     }
     void Make()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         wavescript.wavescomle = 0;
         planescr.maxhp += hpup;
         planescr.hp += hpup + 1;

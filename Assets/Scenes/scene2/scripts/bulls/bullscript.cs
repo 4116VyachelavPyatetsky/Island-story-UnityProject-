@@ -43,7 +43,8 @@ public class bullscript : MonoBehaviour
             if (bouncing && amountOfBounces != 0)
             {
                 amountOfBounces -= 1;
-                float ang = Random.Range(-90, 90);
+                float ang = Random.Range(-180, 180);
+                transform.eulerAngles = new Vector3(0, 0, ang);
                 target = transform.position + transform.up * 10f;
             }
             else
@@ -63,6 +64,7 @@ public class bullscript : MonoBehaviour
             {
                 amountOfBounces -= 1;
                 float ang = Random.Range(-90, 90);
+                transform.eulerAngles = new Vector3(0, 0, ang);
                 target = transform.position + transform.up * 10f;
             }
             if (lel.transform.parent != null)

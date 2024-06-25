@@ -10,6 +10,7 @@ public class GUNscr : MonoBehaviour
     Animator anm;
     bool isBusy = false;
     bool isShooting = false;
+    public AudioSource au;
     void Start()
     {
         plane = GameObject.Find("plane");
@@ -31,8 +32,9 @@ public class GUNscr : MonoBehaviour
     IEnumerator LazerShot()
     {
         isBusy = true;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(4.0f);
         anm.SetTrigger("shot");
+        au.Play();
         isShooting = true;
         isBusy = false;
     }

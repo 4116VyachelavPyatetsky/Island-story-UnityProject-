@@ -35,11 +35,10 @@ public class tumanScr : MonoBehaviour
             Destroy(gameObject);
             TubaScr.activated = false;
             Saves.TrubaBought -= 1;
-            GameObject.Find("Text(Clone)(Clone)").GetComponent<Text>().text = Saves.TrubaBought.ToString();
+            GameObject.Find("SchetTuba").GetComponent<Text>().text = Saves.TrubaBought.ToString();
             if (Saves.TrubaBought == 0) 
             {
-                Destroy(GameObject.Find("Text(Clone)(Clone)"));
-                Destroy(GameObject.Find("Truba(Clone)"));
+                GameObject.Find("Tuba").SetActive(false) ;
             }
 
         }

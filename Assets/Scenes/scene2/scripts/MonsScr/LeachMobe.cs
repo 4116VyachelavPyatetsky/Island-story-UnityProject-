@@ -21,8 +21,8 @@ public class LeachMobe : MonoBehaviour
             //transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(targ.position.y - transform.position.y, targ.position.x - transform.position.x) * Mathf.Rad2Deg + 90);
             //transform.position = Vector3.MoveTowards(transform.position, targ.position, 0.03f);
         }
-        else if (transform.position.y < -6.12f) Destroy(gameObject);
-        transform.position = Vector3.MoveTowards(transform.position, transform.position - transform.up, 0.06f);
+        else if (transform.position.y < -6.12f * wavescript.screenSizePere) Destroy(gameObject);
+        if(!wavescript.gamestopped) transform.position = Vector3.MoveTowards(transform.position, transform.position - transform.up, 0.06f);
     }
     public void DopEnemSpawn()
     {

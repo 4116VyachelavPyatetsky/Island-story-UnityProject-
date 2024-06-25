@@ -19,6 +19,7 @@ public class bullsize : MonoBehaviour
     }
     void OnMouseDown()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         //wavescript.gamestopped = false;
         wavescript.wavescomle = 0;
         gunscrfirst.size += 0.5f;

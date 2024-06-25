@@ -11,9 +11,11 @@ public class StraitMons90 : MonoBehaviour
     bool found = false;
     GameObject plane;
     Animator anim;
+    AudioSource au;
     // Start is called before the first frame update
     void Start()
     {
+        au = gameObject.GetComponent<AudioSource>();
         anim = gameObject.GetComponent<Animator>();
         napr = new Vector3(transform.position.x, transform.position.y - 100.0f, 0);
         plane = GameObject.Find("plane");
@@ -34,6 +36,8 @@ public class StraitMons90 : MonoBehaviour
         }
         if (transform.position.y + obzor > plane.transform.position.y && transform.position.y - obzor < plane.transform.position.y && !found && plane != null)
         {
+            au.pitch = Random.Range(0.9f, 1.1f);
+            au.Play();
             if (transform.position.x < plane.transform.position.x) Rota = 90;
             else Rota = -90;
             napr = new Vector3(transform.position.x + 100.0f * Mathf.Sin(Rota), transform.position.y, 0);

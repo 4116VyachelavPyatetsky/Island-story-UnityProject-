@@ -12,7 +12,7 @@ public class RocketUpScr : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "You wanna war?";
+        A.GetComponent<Text>().text = "Big bomb";
     }
     void OnMouseDown()
     {
@@ -20,6 +20,7 @@ public class RocketUpScr : MonoBehaviour
     }
     void Make()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         wavescript.wavescomle = 0;
         Destroy(gameObject.transform.parent.gameObject.transform.parent.gameObject);
         Destroy(A);

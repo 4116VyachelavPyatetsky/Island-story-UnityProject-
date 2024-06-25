@@ -15,8 +15,11 @@ public class shootenem : MonoBehaviour
     float startpos;
     float posy;
     bool isBusy = false;
+
+    AudioSource au;
     void Start()
     {
+        au = gameObject.GetComponent<AudioSource>();
         anim = gameObject.GetComponent<Animator>();
         target = GameObject.Find("plane");
     }
@@ -110,6 +113,7 @@ public class shootenem : MonoBehaviour
         isBusy = true;
         anim.SetBool("atack", true);
         yield return new WaitForSeconds(0.83f);
+        au.Play();
         GameObject A = Instantiate(projectie, gameObject.transform.position, Quaternion.identity);
         Vector3 promej = target.transform.position;
         A.GetComponent<projscript>().rastoynie = promej + (promej - transform.position) * 10;

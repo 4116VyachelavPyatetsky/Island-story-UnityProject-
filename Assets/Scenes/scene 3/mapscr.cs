@@ -22,7 +22,7 @@ public class mapscr : MonoBehaviour
     {
         if (Saves.TrubaBought !=0)
         {
-            Instantiate(Truba,transform);
+            Truba.SetActive(true);
         }
         if (p[0] == 5)
         {

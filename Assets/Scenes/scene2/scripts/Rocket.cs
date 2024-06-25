@@ -17,7 +17,7 @@ public class Rocket : MonoBehaviour
         if (lel.gameObject.tag == "Player" || lel.gameObject.tag == "DamagedPlayer")
         {
             ShootRocket.amountOfRocket++;
-            GameObject.Find("RocketButton").GetComponent<ShootRocket>().UpdtText();
+            GameObject.Find("RocketButton").GetComponent<ShootRocket>().GetRock();
             Destroy(gameObject);
         }
     }

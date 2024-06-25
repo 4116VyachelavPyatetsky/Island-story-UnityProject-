@@ -21,30 +21,30 @@ public class enemyhp : MonoBehaviour
     public bool spawnAnyOne = false;
     void Start()
     {
+        if (boss)
+        {
+            health = GameObject.Find("BossHPRam");
+        }
         if(gameObject.tag == "Snake")
         {
             ammount = transform.childCount;
             hp = transform.childCount * 5;
             OtherObject = transform.GetChild(transform.childCount/2-1);
         }
-        hp *= 2;
+        hp *= 1;
         spr = GetComponent<SpriteRenderer>();
         coins[0] = Resources.Load("Money/COin") as GameObject;
         coins[1] = Resources.Load("Money/COin5") as GameObject;
         Rocket = Resources.Load("Money/rocketPickup") as GameObject;
         hpram = Resources.Load("hpRam/obr") as GameObject;
         deathEffect = Resources.Load("death effect_0") as GameObject;
-        if (upgr)
+        if (upgr && !boss)
         {
             if(gameObject.tag == "Snake")
             {
                 health = Instantiate(hpram, OtherObject.position + new Vector3(0, 0.3f, 0), Quaternion.identity, GameObject.Find("hpnvas").transform);
             }
             else health = Instantiate(hpram,transform.position + new Vector3(0,0.3f,0),Quaternion.identity,GameObject.Find("hpnvas").transform);
-            if (boss)
-            {
-                health.transform.localScale = new Vector3(2, 2, 2);
-            }
         }
         if (wavescript.AmmountOfMaps == 2) {
             hp = Mathf.RoundToInt(hp * 1.5f); 
@@ -60,21 +60,20 @@ public class enemyhp : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (upgr)
+        if (upgr && !boss)
         {
-            if (boss)
-            {
-                health.transform.position = transform.position + new Vector3(0, -0.6f, 0);
-            }
-            else if(gameObject.tag == "Snake") health.transform.position = OtherObject.position + new Vector3(0, 0.3f, 0);
-            else health.transform.position = transform.position + new Vector3(0, 0.3f, 0);
+            if(gameObject.tag == "Snake") health.transform.position = OtherObject.position + new Vector3(0, 0.3f, 0);
+            else health.transform.position = transform.position + new Vector3(0, 0.4f, 0);
             
         }
     }
     public void enemIsDamaged(int dmg)
     {
         hp-=dmg;
-        if(upgr) health.transform.GetChild(0).localScale = new Vector2((float)hp / maxHP, 1.0f);
+        if (upgr || boss)
+        {
+            health.transform.GetChild(0).localScale = new Vector2((float)hp / maxHP, 1.0f);
+        }
         if (gameObject.tag == "Snake")
         {
             if (hp < (ammount - threatende-1) * 10*2)
@@ -94,10 +93,17 @@ public class enemyhp : MonoBehaviour
             {
                 gameObject.GetComponent<LeachMobe>().DopEnemSpawn();
             }
-            if (upgr)Destroy(health);
+            if (boss)
+            {
+                health.SetActive(false);
+            }
+            else if (upgr)Destroy(health);
             if (gameObject.tag != "Snake")
             {
-                Instantiate(deathEffect, transform.position, Quaternion.identity);
+                if(deathEffect != null)
+                {
+                    Instantiate(deathEffect, transform.position, Quaternion.identity);
+                }
                 Loot(transform.position);
             }
             if(transform.parent.gameObject.tag == "pvt")

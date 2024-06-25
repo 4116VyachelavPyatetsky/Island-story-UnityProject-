@@ -10,12 +10,17 @@ public class treescrip : MonoBehaviour
     public GameObject score_txt;
     Animator antor;
     public GameObject partcle;
+
+    AudioSource au;
     private void Start()
     {
+        au = GetComponent<AudioSource>();
         antor = gameObject.GetComponent<Animator>();
     }
     void OnMouseDown()
     {
+        au.pitch = Random.Range(0.8f, 1.2f);
+        au.Play();
         Instantiate(partcle);
         antor.SetTrigger("punch");
         money.znach += ChopForce;

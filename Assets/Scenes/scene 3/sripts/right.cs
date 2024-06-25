@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class right : MonoBehaviour
 {
+    AudioSource au;
+    private void Start()
+    {
+        au = GetComponent<AudioSource>();
+    }
     void OnMouseDown()
     {
+        au.Play();
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
         gameObject.GetComponent<Animation>().Play("NewKnopAnim");
         mapscr.pprelast[0] = mapscr.p[0];
         mapscr.pprelast[1] = mapscr.p[1];

@@ -1,26 +1,36 @@
 
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class planescr : MonoBehaviour
 {
+    public GameObject expl;
     bool isBusy = false;
     int npr = 0;
     public static int PlaneMoney = 0;
     Animator anim;
-    public GameObject image;
+    float ResPeremen;
     public static int maxhp = 10;
     public static int hp = 10;
     public static bool harder = false;
     public static bool upgr = false;
+    public static int AmmpuntOfComers =0;
+    public GameObject Comersial;
     GameObject planehp;
     GameObject Text1;
     GameObject MoneyText;
+    public wavescript mcamera;
+    public GameEndScr end;
+    AudioSource au;
+    public AudioClip clipMoney;
+    public AudioClip clipDamage;
     void Start()
     {
+        au = gameObject.GetComponent<AudioSource>();
+        float a = Screen.height;
+        float b = Screen.width;
+        ResPeremen = (a / b) / (800f / 480f);
         npr = Random.Range(0, 2);
         /*
         if (PlayerPrefs.HasKey("hp"))
@@ -33,9 +43,10 @@ public class planescr : MonoBehaviour
         Text1 = GameObject.Find("helattet");
         MoneyText = GameObject.Find("CoinText");
         planehp = GameObject.Find("hp");
-        hp++;
-        OnDamage();
-        PlusMoney(0);
+        //hp++;
+        Text1.GetComponent<Text>().text = hp.ToString() + "/" + maxhp.ToString();
+        //OnDamage();
+        MoneyText.GetComponent<Text>().text = PlaneMoney.ToString();
     }
     void Update()
     {
@@ -51,13 +62,13 @@ public class planescr : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(-2.36f, gameObject.transform.position.y, 0.0f);
         }
-        if (gameObject.transform.position.y > 4.36f)
+        if (gameObject.transform.position.y > 4.36f * ResPeremen)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, 4.36f, 0.0f);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, 4.36f * ResPeremen, 0.0f);
         }
-        if (gameObject.transform.position.y < -4.36f)
+        if (gameObject.transform.position.y < -4.36f * ResPeremen)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, -4.36f, 0.0f);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, -4.36f * ResPeremen, 0.0f);
         }
     }
     public void OnDamage()
@@ -65,22 +76,37 @@ public class planescr : MonoBehaviour
         if (!isBusy)
         {
             hp--;
-            planehp.transform.localScale = new Vector2((float)hp/maxhp, 1.0f);
-            Text1.GetComponent<Text>().text = hp.ToString() + "/" + maxhp.ToString();
+            au.PlayOneShot(clipDamage);
+            StartCoroutine(Wait());
+            UpdateText();
             if (hp <= 0)
             {
+                isBusy = true;
+                //gameObject.SetActive(false);
                 wavescript.gamestopped = true;
-                TemnScr b = image.GetComponent<TemnScr>();
-                b.scene = 0;
-                b.a = LoadSceneMode.Single;
-                b.FadeToLevel();
-                Destroy(gameObject);
+                Instantiate(expl, transform.position, Quaternion.identity);
+                mcamera.StopForAd();
+                if (AmmpuntOfComers >= 1)
+                {
+                    end.ClosePlaneLevel();
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Comersial.SetActive(true);
+                }
             }
             else
             {
                 StartCoroutine(Wait());
             }
         }
+    }
+
+    public void UpdateText()
+    {
+        planehp.transform.localScale = new Vector2((float)hp / maxhp, 1.0f);
+        Text1.GetComponent<Text>().text = hp.ToString() + "/" + maxhp.ToString();
     }
     void OnTriggerEnter2D(Collider2D lel)
     {
@@ -91,10 +117,19 @@ public class planescr : MonoBehaviour
                 enemyhp fiv = lel.GetComponent<enemyhp>();
                 fiv.enemIsDamaged(5);
             }
+            if (lel.gameObject.tag == "body")
+            {
+                if (lel.transform.parent != null)
+                {
+                    lel.gameObject.transform.parent.gameObject.GetComponent<enemyhp>().enemIsDamaged(5);
+                }
+                else lel.gameObject.GetComponent<dragbodyscr>().head.GetComponent<enemyhp>().enemIsDamaged(5);
+            }
         }
     }
     public void PlusMoney(int GotMon)
     {
+        au.PlayOneShot(clipMoney);
         PlaneMoney += GotMon;
         MoneyText.GetComponent<Text>().text = PlaneMoney.ToString();
     }

@@ -19,6 +19,10 @@ public class bossbirdscr : MonoBehaviour
     List<Vector2> edge1 = new List<Vector2>(),edge2;
 
     enemyhp hpBird;
+
+    public AudioSource au;
+    public AudioClip Strafe;
+    public AudioClip Spit;
     void Start()
     {
         coll = gameObject.GetComponent<EdgeCollider2D>();
@@ -88,16 +92,20 @@ public class bossbirdscr : MonoBehaviour
     }
     IEnumerator Wait()
     {
-        isBusy = true;
-        anim.SetBool("fire", true);
-        yield return new WaitForSeconds(0.33f);
-        GameObject A = Instantiate(projectie,gameObject.transform.position,Quaternion.identity);
-        projscript B = A.GetComponent<projscript>();
-        B.rastoynie = GameObject.Find("plane").transform.position;
-        yield return new WaitForSeconds(0.33f);
-        anim.SetBool("fire", false);
-        yield return new WaitForSeconds(5.33f / dopspeed);
-        isBusy = false;
+        if (transform.position.y < 3.88f)
+        {
+            isBusy = true;
+            anim.SetBool("fire", true);
+            yield return new WaitForSeconds(0.33f);
+            au.PlayOneShot(Spit);
+            GameObject A = Instantiate(projectie, gameObject.transform.position, Quaternion.identity);
+            projscript B = A.GetComponent<projscript>();
+            B.rastoynie = GameObject.Find("plane").transform.position;
+            yield return new WaitForSeconds(0.33f);
+            anim.SetBool("fire", false);
+            yield return new WaitForSeconds(5.33f / dopspeed);
+            isBusy = false;
+        }
     }
     IEnumerator FeathAtcak(float time)
     {
@@ -107,6 +115,7 @@ public class bossbirdscr : MonoBehaviour
         Destroy(A);
         if (Random.Range(0, 6) == 1)
         {
+            au.PlayOneShot(Strafe);
             Straight = true;
         }
         FeatherAttack = false;
@@ -114,8 +123,9 @@ public class bossbirdscr : MonoBehaviour
     void StraightAttack()
     {
         transform.position = Vector3.MoveTowards(gameObject.transform.position, transform.position + Vector3.down, 10f * Time.deltaTime * dopspeed);
-        if(transform.position.y < -7.7f)
+        if(transform.position.y < -20.7f)
         {
+            au.PlayOneShot(Strafe);
             transform.position = new Vector3(transform.position.x +( Random.Range(0,3) - 1),6.5f,0);
             schetStraughtAttack -= 1;
         }

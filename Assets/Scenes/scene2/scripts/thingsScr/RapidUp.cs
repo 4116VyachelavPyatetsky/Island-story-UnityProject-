@@ -12,7 +12,7 @@ public class RapidUp : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "RapidUp";
+        A.GetComponent<Text>().text = "Rapid Up";
     }
     void OnMouseDown()
     {
@@ -20,6 +20,7 @@ public class RapidUp : MonoBehaviour
     }
     void Make()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         wavescript.wavescomle = 0;
         Destroy(gameObject.transform.parent.gameObject.transform.parent.gameObject);
         Destroy(A);

@@ -7,9 +7,13 @@ public class ExpanEnemHead : MonoBehaviour
     GameObject plane;
     public GameObject bull;
     bool isBusy = false;
+    AudioSource au;
+    AudioClip clip;
     // Start is called before the first frame update
     void Start()
     {
+        au = gameObject.GetComponent<AudioSource>();
+        clip = au.clip;
         plane = GameObject.Find("plane");
     }
 
@@ -21,7 +25,10 @@ public class ExpanEnemHead : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(plane.transform.position.y - transform.position.y, plane.transform.position.x - transform.position.x) * Mathf.Rad2Deg + 90);
             if (!isBusy)
             {
-                StartCoroutine(Shoot());
+                if (transform.position.y < 4f)
+                {
+                    StartCoroutine(Shoot());
+                }
             }
         }
     }
@@ -30,6 +37,7 @@ public class ExpanEnemHead : MonoBehaviour
         isBusy = true;
         for (int i = 0; i < 2; i++)
         {
+            au.PlayOneShot(clip);
             GameObject A = Instantiate(bull, gameObject.transform.position, Quaternion.identity);
             Vector3 promej = plane.transform.position;
             A.GetComponent<projscript>().rastoynie = promej + (promej - transform.position) * 10;

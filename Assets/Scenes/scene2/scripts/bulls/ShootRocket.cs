@@ -12,21 +12,18 @@ public class ShootRocket : MonoBehaviour
     Animator reload;
     bool isPlaying = false;
     public GameObject rocket;
+    AudioSource au;
+
+
     void Start()
     {
+        au = gameObject.GetComponent<AudioSource>();
         reload = Anm.GetComponent<Animator>();
         plane = GameObject.Find("plane");
         ammountText.GetComponent<Text>().text = amountOfRocket.ToString();
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OnMouseDown();
-        }
-    }
 
-    private void OnMouseDown()
+    public void Shoot()
     {
         if (amountOfRocket != 0 && !isPlaying)
         {
@@ -37,9 +34,15 @@ public class ShootRocket : MonoBehaviour
             Instantiate(rocket, plane.transform.position, Quaternion.identity);
         }
     }
+
     public void UpdtText()
     {
         ammountText.GetComponent<Text>().text = amountOfRocket.ToString();
+    }
+    public void GetRock()
+    {
+        UpdtText();
+        au.Play();
     }
     public void Untrigger()
     {

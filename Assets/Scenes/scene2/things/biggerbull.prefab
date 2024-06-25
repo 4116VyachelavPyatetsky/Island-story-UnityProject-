@@ -205,5 +205,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48d8fcf931506b4eaa043fa9d5d3cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  b: Bullet Size and DMG UP
+  b: Increased bullet damage and size
   Name: {fileID: 7876072954582204974, guid: 1479829dc8be7ca4c9d8cad74c18cd5f, type: 3}

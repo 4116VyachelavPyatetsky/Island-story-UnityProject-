@@ -13,7 +13,7 @@ public class PricelSbit : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "Scope is broken";
+        A.GetComponent<Text>().text = "Sight off";
     }
     void OnMouseDown()
     {
@@ -21,6 +21,7 @@ public class PricelSbit : MonoBehaviour
     }
     void Make()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         wavescript.wavescomle = 0;
         Destroy(gameObject.transform.parent.gameObject.transform.parent.gameObject);
         Destroy(A);

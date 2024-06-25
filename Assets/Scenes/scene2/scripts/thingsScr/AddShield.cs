@@ -13,7 +13,7 @@ public class AddShield : MonoBehaviour
     {
         A = Instantiate(Name);
         A.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        A.GetComponent<Text>().text = "You under protection";
+        A.GetComponent<Text>().text = "You're under protection";
     }
     void OnMouseDown()
     {
@@ -21,6 +21,7 @@ public class AddShield : MonoBehaviour
     }
     void Make()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         wavescript.wavescomle = 0;
         Destroy(gameObject.transform.parent.gameObject.transform.parent.gameObject);
         Destroy(A);

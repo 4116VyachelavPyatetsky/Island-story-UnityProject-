@@ -12,7 +12,8 @@ public class CostScript : MonoBehaviour
     GameObject E;
     private void Start()
     {
-        E = Instantiate(Costxt, new Vector3(139f + 120f*(number) , 237f, 0), Quaternion.identity,GameObject.Find("Canvas").transform);
+        E = Instantiate(Costxt, new Vector2(135f + 200f * (number), -285f), Quaternion.identity);
+        E.transform.SetParent(GameObject.Find("CanvasShP").transform, false);
         E.GetComponent<Text>().text = cost.ToString();
     }
     private void OnDisable()

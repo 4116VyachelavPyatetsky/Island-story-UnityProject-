@@ -6,10 +6,17 @@ public class UpgradeDopGun : MonoBehaviour
 {
     public GameObject projectie;
     bool isBusy = false;
+    AudioSource au;
+
+    private void Start()
+    {
+        au = GetComponent<AudioSource>();
+    }
     void Update()
     {
         if (!isBusy && !wavescript.gamestopped)
         {
+            au.Play();
             StartCoroutine(Wait());
         }
     }

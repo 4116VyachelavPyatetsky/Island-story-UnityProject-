@@ -20,6 +20,7 @@ public class projectIle : MonoBehaviour
     void Update()
     {
         gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, transform.position + target, Projspeed*Time.deltaTime);
+        if (wavescript.gamestopped) Destroy(gameObject);
         objectoutofarena.outofarena(gameObject);
     }
     void OnTriggerEnter2D(Collider2D lel)

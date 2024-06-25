@@ -7,6 +7,7 @@ public class planeno : MonoBehaviour
     public GameObject[] ups;
     void OnMouseDown()
     {
+        GameObject.Find("Button").GetComponent<AudioSource>().Play();
         Destroy(gameObject.transform.parent.gameObject);
         Destroy(GameObject.Find("Text(Clone)"));
         if (!Saves.inshop)
@@ -25,7 +26,7 @@ public class planeno : MonoBehaviour
         }
         wavescript.GivedItems.Add(itemId);
         GameObject A = Instantiate(ups[itemId]);
-        //GameObject A = Instantiate(ups[14]);
+        //GameObject A = Instantiate(ups[4]);
         A.transform.SetParent(gameObject.transform.parent.gameObject.transform, false);
     }
 }

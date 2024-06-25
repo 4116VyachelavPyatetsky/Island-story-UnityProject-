@@ -79,7 +79,7 @@ public class dragscr : MonoBehaviour
         {
             gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 18.0f, 0.0f), speed );
         }
-        if (gameObject.transform.position.y <= -6.6f)
+        if (gameObject.transform.position.y <= -6.6f*wavescript.screenSizePere)
         {
             Destroy(gameObject.GetComponent<enemyhp>().health);
             Destroy(gameObject);

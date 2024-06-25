@@ -16,9 +16,9 @@ public class fishscr : MonoBehaviour
     {
         if (!wavescript.gamestopped)
         {
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, -5.6f, 0.0f), 4f * Time.deltaTime);
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(gameObject.transform.position.x, -8.6f, 0.0f), 4f * Time.deltaTime);
         }
-        if (gameObject.transform.position.y <= -5.5f)
+        if (gameObject.transform.position.y <= -5.5f * wavescript.screenSizePere)
         {
             Destroy(gameObject.GetComponent<enemyhp>().health);
             Destroy(gameObject);

@@ -24,7 +24,7 @@ public class SnakeEnem : MonoBehaviour
                     {
                         whatDot[i]++;
                     }
-                    if (bodys[i].transform.position.y < -5.56f)
+                    if (bodys[i].transform.position.y < -5.56f * wavescript.screenSizePere)
                     {
                         if (transform.childCount == 1)
                         {

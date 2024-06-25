@@ -10,6 +10,7 @@ public class Repair : MonoBehaviour
         int cost = transform.GetComponent<CostScript>().cost;
         if (planescr.PlaneMoney >= cost)
         {
+            GetComponent<AudioSource>().Play();
             planescr a = GameObject.Find("plane").GetComponent<planescr>();
             planescr.PlaneMoney -= cost;
             planescr.hp = planescr.maxhp + 1;

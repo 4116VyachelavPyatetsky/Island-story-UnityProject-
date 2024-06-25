@@ -15,20 +15,25 @@ public class WoodChopForce : MonoBehaviour
     public GameObject canvas;
     public GameObject stoneup;
     public GameObject stone_score;
+    public GameObject Level;
     GameObject C;
     bool exist = true;
+
+    AudioSource au;
     void OnMouseDown()
     {
+        au.Play();
+        gameObject.GetComponent<Animation>().Play("ShopKnopAnm");
         if (money.znach >= item.woodcost)
         {
             item.lvl++;
+            Level.GetComponent<Text>().text = item.lvl.ToString();
             if ((item.lvl == 5) && (exist))
             {
                 GameObject.Find("Main Camera").GetComponent<money>().item.stoneD = true;
                 exist = false;
-                GameObject A = Instantiate(stone_score, new Vector2(45.3f, 356.39f), Quaternion.identity);
-                A.transform.SetParent(canvas.transform, false);
-                Instantiate(stone, new Vector2(-0.78f, 2.45f), Quaternion.identity);
+                stone_score.SetActive(true);
+                Instantiate(stone, new Vector2(-0.78f, 2.42f), Quaternion.identity);
                 GameObject B = Instantiate(stoneup, new Vector2(-1.552f, 1.108f), Quaternion.identity);
                 C = gameObject.transform.parent.gameObject;
                 B.transform.SetParent(C.transform, false);
@@ -37,8 +42,17 @@ public class WoodChopForce : MonoBehaviour
             item.ChopForce += 1;
             money.znach -= item.woodcost;
             item.woodcost = Mathf.RoundToInt(item.woodcost * 1.5f);
-            textscr.dozens(money.znach,ref score_txt);
-            textscr.dozens(item.woodcost,ref cost_txt);
+            textscr.dozens(money.znach, ref score_txt);
+            textscr.dozens(item.woodcost, ref cost_txt);
+        }
+        else
+        {
+            money.DontHaveMoney++;
+            if (money.DontHaveMoney >= 2 && !TimerToGO.IsWorking)
+            {
+                money.DontHaveMoney = 0;
+                GameObject.Find("Main Camera").GetComponent<money>().Addvertise();
+            }
         }
     }
     public class Item
@@ -54,15 +68,20 @@ public class WoodChopForce : MonoBehaviour
             ChopForce = prd;
         }
     }
-    void Start()
+    private void Awake()
     {
         if (PlayerPrefs.HasKey("ChopForce"))
         {
             item = new Item(PlayerPrefs.GetInt("ChopLvl"), PlayerPrefs.GetInt("Chopwoodcst"), PlayerPrefs.GetInt("ChopForce"));
         }
-        else item = new Item(0,10,1);
+        else item = new Item(0, 10, 1);
+    }
+    void Start()
+    {
+        au = GetComponent<AudioSource>();
         //item = new Item(0, 10, 1);
         treescrip.ChopForce = item.ChopForce;
+        Level.GetComponent<Text>().text = item.lvl.ToString();
         textscr.dozens(item.woodcost, ref cost_txt);
     }
     void OnApplicationQuit()
@@ -73,7 +92,7 @@ public class WoodChopForce : MonoBehaviour
     {
         Save();
     }
-    private void OnApplicationFocus(bool focus)
+    private void OnApplicationPause(bool focus)
     {
         if (!focus)
         {
@@ -85,5 +104,10 @@ public class WoodChopForce : MonoBehaviour
         PlayerPrefs.SetInt("ChopLvl", item.lvl);
         PlayerPrefs.SetInt("Chopwoodcst", item.woodcost);
         PlayerPrefs.SetInt("ChopForce", item.ChopForce);
+        //PlayerPrefs.DeleteAll();
+    }
+    private void OnDestroy()
+    {
+        Save();
     }
 }
