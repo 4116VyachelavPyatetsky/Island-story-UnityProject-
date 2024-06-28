@@ -6,7 +6,7 @@ public static class AppMetricaActivator
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Activate()
     {
-        AppMetrica.Activate(new AppMetricaConfig("d1b94fe6-6972-4af2-a98a-fab939213b1a")
+        AppMetrica.Activate(new AppMetricaConfig("0f9742ef-b145-4c1c-9ae9-e2a9a75740d6")
         {
             FirstActivationAsUpdate = !IsFirstLaunch(),
         });
