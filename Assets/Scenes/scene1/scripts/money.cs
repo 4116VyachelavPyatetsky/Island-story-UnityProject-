@@ -151,24 +151,27 @@ public class money : MonoBehaviour
     }
     public void Addvertise()
     {
-        if (!stoped)
+        if (RewardedAds.ad_is_ready)
         {
-            if (TimerToGO.IsWorking)
+            if (!stoped)
             {
-                UnAddWindow.SetActive(true);
-            }
-            else
-            {
-                AddWindow.SetActive(true);
-                if (ChopForce.GetComponent<WoodChopForce>().item.lvl < 5)
+                if (TimerToGO.IsWorking)
                 {
-                    AddWindow.transform.GetChild(4).gameObject.SetActive(false);
-                    AddWindow.transform.GetChild(6).gameObject.SetActive(false);
+                    UnAddWindow.SetActive(true);
                 }
                 else
                 {
-                    AddWindow.transform.GetChild(4).gameObject.SetActive(true);
-                    AddWindow.transform.GetChild(6).gameObject.SetActive(true);
+                    AddWindow.SetActive(true);
+                    if (ChopForce.GetComponent<WoodChopForce>().item.lvl < 5)
+                    {
+                        AddWindow.transform.GetChild(4).gameObject.SetActive(false);
+                        AddWindow.transform.GetChild(6).gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        AddWindow.transform.GetChild(4).gameObject.SetActive(true);
+                        AddWindow.transform.GetChild(6).gameObject.SetActive(true);
+                    }
                 }
             }
         }

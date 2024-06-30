@@ -12,7 +12,7 @@ public class planescr : MonoBehaviour
     Animator anim;
     float ResPeremen;
     public static int maxhp = 10;
-    public static int hp = 10;
+    public static int hp = 1;
     public static bool harder = false;
     public static bool upgr = false;
     public static int AmmpuntOfComers =0;
@@ -86,7 +86,7 @@ public class planescr : MonoBehaviour
                 wavescript.gamestopped = true;
                 Instantiate(expl, transform.position, Quaternion.identity);
                 mcamera.StopForAd();
-                if (AmmpuntOfComers >= 1)
+                if (AmmpuntOfComers >= 1 || !PlaneAd.ad_is_ready)
                 {
                     end.ClosePlaneLevel();
                     Destroy(gameObject);

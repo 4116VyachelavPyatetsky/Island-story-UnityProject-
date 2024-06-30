@@ -7,9 +7,10 @@ using UnityEngine.Advertisements;
 public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] private Button buttonShowAd;
-    public GameObject Upgr;
+    public GameObject Upgr,advrt_btn;
     [SerializeField] private string androidAdID = "Rewarded_Android";
     [SerializeField] private string iOSAdID = "Rewarded_iOS";
+    public static bool ad_is_ready = false;
 
     private string adID;
 
@@ -20,6 +21,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
             : androidAdID;
 
         buttonShowAd.interactable = false;
+        advrt_btn.SetActive(false);
     }
 
     private void Start()
@@ -35,7 +37,9 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
     public void ShowAd()
     {
+        advrt_btn.SetActive(false);
         buttonShowAd.interactable = false;
+        ad_is_ready = false;
         buttonShowAd.transform.parent.gameObject.SetActive(false);
         Advertisement.Show(adID, this);
     }
@@ -46,8 +50,9 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
         if (adUnitId.Equals(adID))
         {
+            ad_is_ready = true;
             buttonShowAd.onClick.AddListener(ShowAd);
-
+            advrt_btn.SetActive(true);
             buttonShowAd.interactable = true;
         }
     }

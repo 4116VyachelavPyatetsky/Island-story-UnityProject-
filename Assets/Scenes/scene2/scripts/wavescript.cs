@@ -186,7 +186,6 @@ public class wavescript : MonoBehaviour
 
     public void StopForAd()
     {
-        Debug.Log("worked");
         if (!stoped)
         {
             //listen.pause = true;

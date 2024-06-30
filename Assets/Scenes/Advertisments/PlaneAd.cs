@@ -11,6 +11,7 @@ public class PlaneAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListen
     [SerializeField] private string iOSAdID = "Rewarded_iOS";
     public wavescript mncamera;
     public GameObject plane;
+    public static bool ad_is_ready = false;
 
     private string adID;
 
@@ -20,7 +21,7 @@ public class PlaneAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListen
             ? iOSAdID
             : androidAdID;
 
-        buttonShowAd.interactable = false;
+        //buttonShowAd.interactable = false;
     }
 
     private void Start()
@@ -36,7 +37,8 @@ public class PlaneAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListen
 
     public void ShowAd()
     {
-        buttonShowAd.interactable = false;
+        //buttonShowAd.interactable = false;
+        ad_is_ready = false;
         buttonShowAd.transform.parent.gameObject.SetActive(false);
         Advertisement.Show(adID, this);
     }
@@ -48,7 +50,7 @@ public class PlaneAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListen
         if (adUnitId.Equals(adID))
         {
             buttonShowAd.onClick.AddListener(ShowAd);
-
+            ad_is_ready = true;
             buttonShowAd.interactable = true;
         }
     }
