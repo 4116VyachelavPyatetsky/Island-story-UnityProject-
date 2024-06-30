@@ -86,7 +86,7 @@ public class planescr : MonoBehaviour
                 wavescript.gamestopped = true;
                 Instantiate(expl, transform.position, Quaternion.identity);
                 mcamera.StopForAd();
-                if (AmmpuntOfComers >= 1)
+                if (AmmpuntOfComers >= 1 || !PlaneAd.add_is_ready)
                 {
                     end.ClosePlaneLevel();
                     Destroy(gameObject);

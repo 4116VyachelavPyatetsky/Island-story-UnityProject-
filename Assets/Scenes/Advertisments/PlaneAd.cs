@@ -11,6 +11,7 @@ public class PlaneAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListen
     [SerializeField] private string iOSAdID = "Rewarded_iOS";
     public wavescript mncamera;
     public GameObject plane;
+    public static bool add_is_ready = false;
 
     private string adID;
 
@@ -43,12 +44,11 @@ public class PlaneAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListen
 
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
-        Debug.Log("Ad Loaded: " + adUnitId);
 
         if (adUnitId.Equals(adID))
         {
             buttonShowAd.onClick.AddListener(ShowAd);
-
+            add_is_ready = true;
             buttonShowAd.interactable = true;
         }
     }
